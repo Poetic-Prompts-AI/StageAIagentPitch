@@ -153,6 +153,60 @@ ul.styled li::before { content: '▹'; color: #f90cff; position: absolute; left:
   </div>
 </div>
 
+<!-- Página 3: API Stage AI Lite -->
+<div class="page">
+  <div class="header">
+    <div>
+      <p class="badge">Stage AI Lite</p>
+      <h2 class="title" style="font-size:36px;">Engine de Geração de Imagens</h2>
+      <p class="subtitle">API proprietária que o agente chama em 30 s</p>
+    </div>
+    <img src="logo1.png" class="logo" alt="Stage AI" />
+  </div>
+  <div class="grid-line"></div>
+  <div class="columns flexible">
+    <div class="card">
+      <h3>Endpoint</h3>
+      <p><code>POST ${STAGEAI_BASE_URL}/api/lite/generate</code> com cabeçalho <code>X-Lite-Key</code> (stageai lite).</p>
+      <p>Recebe JSON completo com campos A–F, LED, luz, paleta, cena humana e notas.</p>
+    </div>
+    <div class="card">
+      <h3>Payload</h3>
+      <ul class="styled">
+        <li>Defaults auditados: palco circular, semCenaHumana=true, câmera wide.</li>
+        <li>Permite ledLayout, luzPosicoes, artePaleta, performance, cameraStyle.</li>
+        <li>Respeita regras SOUL (sem LED inventado, performer correto).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Resposta</h3>
+      <p>JSON com <code>image_url</code>, <code>remaining_credits</code> e eco do payload.</p>
+      <p>Tempo médio: 30s, resolução 4K, estilo Stage AI.</p>
+    </div>
+  </div>
+  <div class="columns flexible">
+    <div class="card">
+      <h3>Autenticação</h3>
+      <p>Variáveis de ambiente: <code>STAGEAI_BASE_URL</code> e <code>STAGEAI_LITE_API_KEY</code> carregadas via ~/.profile.</p>
+      <p>Aprovação do gateway permite <code>curl</code> com POST.</p>
+    </div>
+    <div class="card">
+      <h3>Logs & Créditos</h3>
+      <p>Resposta cita créditos restantes. AGENT loga payload + image_url em memória diária para /variacao.</p>
+      <p>Erros retornam status HTTP + mensagem; agente repassa ao usuário.</p>
+    </div>
+    <div class="card">
+      <h3>Integração com Skills</h3>
+      <ul class="styled">
+        <li><strong>/render_quick</strong>: monta JSON e chama API.</li>
+        <li><strong>/variacao</strong>: reaproveita payload e envia diffs.</li>
+        <li><strong>/lighting_designer</strong>: injeta patch de luz antes da chamada.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-note">Stage AI Lite roda em Vercel (stack proprietária Stage AI) — manter credenciais seguras.</div>
+</div>
+
 <!-- Página 3: Fluxo -->
 <div class="page">
   <div class="header">
@@ -259,7 +313,7 @@ ul.styled li::before { content: '▹'; color: #f90cff; position: absolute; left:
     </div>
     <div class="card">
       <h3>/orcar</h3>
-      <p>Python lê pricing.csv, soma LED (m² ou linear), fixtures PARLED/WASH/BEAM/SPOT/STROBE e haze. Reporta itens sem preço.</p>
+      <p>Lê pricing.csv (palco/LED/luz/logística), aponta itens sem preço e entrega resumo financeiro.</p>
     </div>
     <div class="card">
       <h3>/calcular</h3>
@@ -267,11 +321,15 @@ ul.styled li::before { content: '▹'; color: #f90cff; position: absolute; left:
     </div>
     <div class="card">
       <h3>/lighting_designer</h3>
-      <p>Analisa payloads e distribui FOH/laterais/back/teto, indica haze/CCT e gera patch JSON para Stage AI Lite.</p>
+      <p>Analisa payloads e distribui FOH/laterais/back/teto, indica haze/CCT e gera patch JSON.</p>
+    </div>
+    <div class="card">
+      <h3>/design_systems</h3>
+      <p>Converte Markdown em decks HTML/PDF (logo + fontes Stage AI), usando presets como StageAI_DocsDeck2.</p>
     </div>
     <div class="card">
       <h3>/acervo</h3>
-      <p>Scanner/busca do diretório /home/labnomade/stageai_acervo. Lista decks, logos, pricing e dossiês para referência.</p>
+      <p>Scanner/busca do diretório /home/labnomade/stageai_acervo. Lista decks, logos, pricing e dossiês.</p>
     </div>
   </div>
   <div class="accent-box">
