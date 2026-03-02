@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Stage AI Agent — Dossiê Técnico & Conceitual</title>
+<style>
+@font-face {
+  font-family: 'AlphaDigital';
+  src: url('fonts/AlphaDigital.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Digital';
+  src: url('fonts/Digital.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  font-family: 'Digital', 'AlphaDigital', 'Helvetica', sans-serif;
+}
+@page {
+  size: A4 landscape;
+  margin: 1.7cm;
+}
+body {
+  margin: 0;
+  background: #04050a;
+  color: #f6f6ff;
+  font-family: 'Digital', 'AlphaDigital', 'Helvetica', sans-serif;
+}
+.page {
+  width: 100%;
+  min-height: 14cm;
+  box-sizing: border-box;
+  background: radial-gradient(circle at top right, rgba(249,12,255,0.18), transparent 40%), #05060d;
+  border-radius: 24px;
+  padding: 1.6cm 1.8cm;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  position: relative;
+  page-break-after: always;
+}
+.page:last-of-type { page-break-after: auto; }
+.header {
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+}
+.title { font-size: 42px; letter-spacing: 0.04em; margin: 0; }
+.subtitle { font-size: 18px; color: #a9b7d8; letter-spacing: 0.06em; margin-top: 0.4rem; }
+.logo { width: 180px; height: auto; }
+.grid-line { height: 2px; width: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); }
+.columns { display: grid; grid-template-columns: repeat(3, minmax(240px, 1fr)); gap: 1.2rem; }
+.columns.flexible { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.card {
+  background: rgba(6,10,25,0.92);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.card h3 { font-size: 20px; color: #00f5d4; margin: 0; }
+.card p, .card li { margin: 0; line-height: 1.5; }
+ul.styled { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+ul.styled li { position: relative; padding-left: 1rem; }
+ul.styled li::before { content: '▹'; color: #f90cff; position: absolute; left: 0; }
+.badge { font-size: 16px; color: #f90cff; letter-spacing: 0.2em; text-transform: uppercase; }
+.accent-box { border-left: 4px solid #00f5d4; padding-left: 1rem; color: #fafbff; line-height: 1.6; }
+.kpi-grid { display: grid; grid-template-columns: repeat(3, minmax(180px,1fr)); gap: 1rem; }
+.kpi { background: rgba(4,8,18,0.85); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 1rem 1.2rem; }
+.kpi .value { font-size: 34px; color: #00f5d4; }
+.kpi .label { color: #a3b1c9; font-size: 14px; letter-spacing: 0.04em; }
+.footer-note { margin-top: auto; color: #7f8cab; font-size: 13px; letter-spacing: 0.08em; }
+.flow { display: grid; grid-template-columns: repeat(5, minmax(200px, 1fr)); gap: 1rem; }
+.flow-step h4 { margin: 0; color: #f90cff; }
+.flow-step span { font-size: 12px; color: #9db0d0; letter-spacing: 0.2em; }
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th, .table td { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0.6rem 0.4rem; text-align: left; }
+.table th { text-transform: uppercase; font-size: 12px; color: #9ab0d4; letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+<!-- Página 1: Identidade -->
+<div class="page">
+  <div class="header">
+    <div>
+      <p class="badge">Stage AI Agent</p>
+      <h1 class="title">Dossiê Técnico & Conceitual</h1>
+      <p class="subtitle">Quem é, como atua e por que importa</p>
+    </div>
+    <img src="logo1.png" alt="Stage AI" class="logo" />
+  </div>
+  <div class="grid-line"></div>
+  <div class="columns flexible">
+    <div class="card">
+      <h3>Identidade</h3>
+      <ul class="styled">
+        <li>Especialista virtual em palco, luz, LED e orçamento.</li>
+        <li>Opera no ecossistema Stage AI (Telegram → OpenClaw → Stage AI Lite).</li>
+        <li>Persona definida em SOUL.md e AGENTS.md.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Postura</h3>
+      <p>Técnica, direta e orientada a regras. Reforça limites críticos (LED, performers, fixtures) para garantir renderizações fiéis e propostas consistentes.</p>
+    </div>
+    <div class="card">
+      <h3>Propósito</h3>
+      <p>Conectar briefing A–F a render, orçamento e documentação visual/financeira pronta para cliente e time.</p>
+    </div>
+  </div>
+  <div class="footer-note">Atualizado em 02/03/2026 · Stage AI Agent</div>
+</div>
+
+<!-- Página 2: Capacidades -->
+<div class="page">
+  <div class="header">
+    <div>
+      <p class="badge">Capacidades</p>
+      <h2 class="title" style="font-size:36px;">Núcleo Operacional</h2>
+      <p class="subtitle">6 pilares que sustentam o agente</p>
+    </div>
+    <img src="logo1.png" class="logo" alt="Stage AI" />
+  </div>
+  <div class="grid-line"></div>
+  <div class="columns flexible">
+    <div class="card">
+      <h3>1. Render 4K / 30s</h3>
+      <p>Converte briefing A–F em payload JSON auditado e chama Stage AI Lite com defaults (palco circular, câmera wide, semCenaHumana por padrão).</p>
+    </div>
+    <div class="card">
+      <h3>2. Variações</h3>
+      <p>Altera LED, fixtures, arte ou performer sem refazer briefing; mantém histórico para controlar créditos e coerência visual.</p>
+    </div>
+    <div class="card">
+      <h3>3. Orçamento</h3>
+      <p>Consulta pricing.csv e calcula item a item (palco, LED, iluminação, operadores, logística). Entrega resumo pronto para o cliente.</p>
+    </div>
+    <div class="card">
+      <h3>4. Consumo Energético</h3>
+      <p>Estima potência pico/média, corrente e kWh com base em LED (m²/pixels) e fixtures, ajudando a prever infraestrutura.</p>
+    </div>
+    <div class="card">
+      <h3>5. Decks & Dossiês</h3>
+      <p>/design_systems transforma Markdown em apresentações Stage AI (logo, fontes, grids) incluindo temas “Wiley Edition”.</p>
+    </div>
+    <div class="card">
+      <h3>6. Lighting Designer</h3>
+      <p>/lighting_designer suggest analisa payloads, distribui FOH/laterais/back/teto, recomenda haze/CCT e gera patch JSON.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Página 3: Fluxo -->
+<div class="page">
+  <div class="header">
+    <div>
+      <p class="badge">Arquitetura</p>
+      <h2 class="title" style="font-size:36px;">Fluxo Operacional</h2>
+      <p class="subtitle">Telegram → OpenClaw → Stage AI Lite → Cliente</p>
+    </div>
+    <img src="logo1.png" class="logo" alt="Stage AI" />
+  </div>
+  <div class="grid-line"></div>
+  <div class="flow">
+    <div class="card flow-step">
+      <span>01</span>
+      <h4>Entrada</h4>
+      <p>Briefings via Telegram + comandos (/render_quick, /variacao, /orcar, /calcular, /design_systems, /lighting_designer).</p>
+    </div>
+    <div class="card flow-step">
+      <span>02</span>
+      <h4>Validação</h4>
+      <p>Defaults SOUL + acervo. Payload JSON completo para palco/LED/luz/cena humana.</p>
+    </div>
+    <div class="card flow-step">
+      <span>03</span>
+      <h4>Stage AI Lite</h4>
+      <p>/render_quick envia JSON e recebe image_url em 30 s (com créditos restantes).</p>
+    </div>
+    <div class="card flow-step">
+      <span>04</span>
+      <h4>Finanças & Energia</h4>
+      <p>/orcar e /calcular entregam custos detalhados e potência/kWh.</p>
+    </div>
+    <div class="card flow-step">
+      <span>05</span>
+      <h4>Lighting Pass</h4>
+      <p>/lighting_designer suggest distribui FOH/laterais/back/teto, define haze/CCT e gera patch JSON.</p>
+    </div>
+    <div class="card flow-step">
+      <span>06</span>
+      <h4>Entrega</h4>
+      <p>Links e arquivos (render, orçamento, cálculo, decks) enviados no mesmo canal.</p>
+    </div>
+  </div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="value">30 s</div><div class="label">Render médio Stage AI Lite</div></div>
+    <div class="kpi"><div class="value">-60%</div><div class="label">Horas de pré-produção</div></div>
+    <div class="kpi"><div class="value">+40%</div><div class="label">Aprovação em 1ª reunião</div></div>
+  </div>
+</div>
+
+<!-- Página 4: Benefícios/Pitch -->
+<div class="page">
+  <div class="header">
+    <div>
+      <p class="badge">Valor</p>
+      <h2 class="title" style="font-size:36px;">Por que usar?</h2>
+      <p class="subtitle">Velocidade · Consistência · Documentação · Escala</p>
+    </div>
+    <img src="logo1.png" class="logo" alt="Stage AI" />
+  </div>
+  <div class="grid-line"></div>
+  <div class="columns flexible">
+    <div class="card">
+      <h3>Velocidade</h3>
+      <p>Render + orçamento + cálculo energético prontos em minutos, sem filas ou planilhas manuais.</p>
+    </div>
+    <div class="card">
+      <h3>Consistência</h3>
+      <p>Mesmas regras Stage AI em todo briefing. Sem LED inventado ou performer errado.</p>
+    </div>
+    <div class="card">
+      <h3>Documentação</h3>
+      <p>Cada atendimento vira deck/dossiê com o mesmo padrão visual e textos auditáveis.</p>
+    </div>
+    <div class="card">
+      <h3>Escalabilidade</h3>
+      <p>Atende múltiplos projetos simultaneamente, liberando o time criativo para conceber novas ideias.</p>
+    </div>
+  </div>
+  <div class="accent-box">
+    <strong>Pitch Final:</strong> Stage AI Agent substitui planilhas manuais, renders demorados e orçamentos “no feeling”. Em um comando, qualquer briefing vira imagem 4K + custo + consumo + documentação com a linguagem Stage AI, pronta para vender ou executar o show.
+  </div>
+</div>
+
+<!-- Página 5: Skills & Automação (padrão solicitado) -->
+<div class="page">
+  <div class="header">
+    <div>
+      <p class="badge">Skills & Automação</p>
+      <h2 class="title" style="font-size:36px;">Stack Stage AI Agent</h2>
+      <p class="subtitle">Skills em /workspace-stage-ai/skills</p>
+    </div>
+    <img src="logo1.png" class="logo" alt="Stage AI" />
+  </div>
+  <div class="grid-line"></div>
+  <div class="columns flexible">
+    <div class="card">
+      <h3>/render_quick</h3>
+      <p>Transforma briefing A–F em JSON completo, aplica defaults e chama Stage AI Lite via curl. Retorna link + créditos.</p>
+    </div>
+    <div class="card">
+      <h3>/variacao</h3>
+      <p>Reusa último payload e só altera campos solicitados (ângulo, LED, luz, clima). Mantém consistência de regras e créditos.</p>
+    </div>
+    <div class="card">
+      <h3>/orcar</h3>
+      <p>Python lê pricing.csv, soma LED (m² ou linear), fixtures PARLED/WASH/BEAM/SPOT/STROBE e haze. Reporta itens sem preço.</p>
+    </div>
+    <div class="card">
+      <h3>/calcular</h3>
+      <p>calc_power.py aplica tabelas de W pico/médio por fixture e gera kWh, corrente @220/127 V e observações elétricas.</p>
+    </div>
+    <div class="card">
+      <h3>/lighting_designer</h3>
+      <p>Analisa payloads e distribui FOH/laterais/back/teto, indica haze/CCT e gera patch JSON para Stage AI Lite.</p>
+    </div>
+    <div class="card">
+      <h3>/acervo</h3>
+      <p>Scanner/busca do diretório /home/labnomade/stageai_acervo. Lista decks, logos, pricing e dossiês para referência.</p>
+    </div>
+  </div>
+  <div class="accent-box">
+    Identidade: SOUL.md reforça regras críticas (sem LED quando layout vazio, 1 performer em DJ/palestra, semCenaHumana controla pessoas). AGENTS.md instrui rotina de leitura de memória a cada sessão.
+  </div>
+</div>
+
+<!-- Página 6: Implantação (padrão solicitado) -->
+<div class="page">
+  <div class="header">
+    <div>
+      <p class="badge">Implantação</p>
+      <h2 class="title" style="font-size:36px;">Checklists & Acervo</h2>
+      <p class="subtitle">Como replicar ou manter o sistema</p>
+    </div>
+    <img src="logo1.png" class="logo" alt="Stage AI" />
+  </div>
+  <div class="grid-line"></div>
+  <div class="columns flexible">
+    <div class="card">
+      <h3>Checklist de Setup</h3>
+      <ul class="styled">
+        <li>Instalar Node 22+ e OpenClaw no host (RPi4).</li>
+        <li>Rodar <code>openclaw onboard --install-daemon</code>.</li>
+        <li>Configurar env: OPENAI_API_KEY, TELEGRAM_BOT_TOKEN, STAGEAI_BASE_URL, STAGEAI_LITE_API_KEY.</li>
+        <li>Copiar workspace Stage AI (IDENTITY, SOUL, skills).</li>
+        <li>Aplicar approvals para curl/bash/python.</li>
+        <li>Testar Stage AI Lite com curl antes de liberar no bot.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Acervo Local</h3>
+      <p>Local: /home/labnomade/stageai_acervo (~3 MB). Contém decks PDF/HTML, logotipo, fontes, pricing.csv, dossiês e pastas stageai_docs/ stageai_dossier/.</p>
+    </div>
+    <div class="card">
+      <h3>Monitoramento</h3>
+      <p>Gateway approvals listam comandos autorizados (curl, python3, bash). Serviços monitorados via <code>systemctl --user</code> (openclaw-gateway).</p>
+    </div>
+  </div>
+  <table class="table" style="margin-top:1rem;">
+    <thead>
+      <tr><th>Recurso</th><th>Arquivo</th><th>Uso</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Identidade</td><td>SOUL.md · IDENTITY.md</td><td>Define persona, defaults e regras duras.</td></tr>
+      <tr><td>Memória</td><td>memory/YYYY-MM-DD.md · MEMORY.md</td><td>Loga renders, créditos e instruções permanentes.</td></tr>
+      <tr><td>Pricing</td><td>pricing.csv</td><td>Base do /orcar para LED, luz e efeitos.</td></tr>
+      <tr><td>Dossiês</td><td>stageai_docs/ · stageai_dossier/</td><td>Documentação técnica, inventário e rede.</td></tr>
+    </tbody>
+  </table>
+  <div class="footer-note">Atualizado em 02/03/2026 — mantenha este PDF no acervo para onboarding rápido.</div>
+</div>
+</body>
+</html>
